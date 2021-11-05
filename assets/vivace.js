@@ -59,7 +59,9 @@
         $('.button-collapse').sideNav({'edge': 'left'});
     });
 })(jQuery);
-
+// $(document).ready(function() {
+//     $('select').material_select('destroy');
+// });
 
 $(function() {
     var topBtn = $('#page-top');
