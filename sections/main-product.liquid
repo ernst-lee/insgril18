@@ -192,7 +192,7 @@
           <div class="marl5 marr5">
             <div class="related-flex-wrapper">
             <product-recommendations class="product-recommendations page-width" data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit=3">
-              {% if  recommendations.products_count > 0 %}
+              {% if recommendations.performed and recommendations.products_count > 0 %}
               <div class="relatedItems clearfix">
                 <div class="sec-ttl crim">
                   <div class="list-ttl">{{ section.settings.heading | escape }}<span class="bar"></span></div>
