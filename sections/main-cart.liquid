@@ -242,10 +242,12 @@
                         <div class="textRight">
                           <select>
                             
+                            {%- for number in (1..100) -%}
                             <option value="{{ number }}" selected="selected">
                               {{ number }}
                             </option>
-                           
+                            {%- endfor -%}
+                              
                           </select>
                             
                           <p class="textRight delItem ">
