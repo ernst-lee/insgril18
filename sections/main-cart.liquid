@@ -239,21 +239,15 @@
                         {{ item.original_price | money }}
                       </td>
                       <td>
-                        <div class="textRight ">
+                        <div class="textRight">
                           <select>
-                            <option value="1 " selected="selected ">
-                              1
+                            
+                            <option value="{{ number }}" selected="selected">
+                              {{ number }}
                             </option>
-                            <option value="2 ">
-                              2
-                            </option>
-                            <option value="3 ">
-                              3
-                            </option>
-                            <option value="4 ">
-                              4
-                            </option>
+                           
                           </select>
+                            
                           <p class="textRight delItem ">
                             <a href="/order/delete_item?shop_id=insgirl18&index=0" class="sub">
                               削除
