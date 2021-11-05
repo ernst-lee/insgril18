@@ -1,0 +1,96 @@
+<footer class="page-footer-noitem">
+  <section>
+      <div class="footer-copyright">
+          <div class="container-wide">
+              <div id="language" class="mart15 marb10 clearfix">
+                  <div id="i18" class="clearfix">
+                      <div class="lang">
+                          <form action=""
+                                method="post" accept-charset="utf-8">
+                              <div style="display:none;">
+                                  <input type="hidden" name="_method" value="POST" />
+                                  <input type="hidden" name="data[_Token][key]" value="597d5936cc15865e1512517bb3bb8a24183045d7a1748c54ebe1fad6056f758a7257dd86ad61e9032925b6b3799f26324e74fd07213dfe69434087396a0ff211" id="Token235792452" autocomplete="off" />
+                              </div>
+                              <input type="hidden" name="data[UserLanguage][shop_id]" value="insgirl18"
+                                     id="UserLanguageShopId" />
+                              <div class="input select required">
+                                  <select name="data[UserLanguage][language_code]" class="x_i18nSelectBox"
+                                          required="required">
+                                      <option value="ja" selected="selected">
+                                          日本語
+                                      </option>
+                                  </select>
+                              </div>
+                              <div style="display:none;">
+                                  <input type="hidden" name="data[_Token][fields]" value="8e9db3160e268ba03f4a834034edbc9fe8410ae7%3AUserLanguage.shop_id" id="TokenFields1926576627" autocomplete="off" />
+                                  <input type="hidden" name="data[_Token][unlocked]" value="" id="TokenUnlocked590797203" autocomplete="off" />
+                              </div>
+                          </form>
+                      </div>
+
+                      <div class="currency">
+                          <form action=""
+                                method="post" accept-charset="utf-8">
+                              <div style="display:none;">
+                                  <input type="hidden" name="_method" value="POST" />
+                                  <input type="hidden" name="data[_Token][key]" value="597d5936cc15865e1512517bb3bb8a24183045d7a1748c54ebe1fad6056f758a7257dd86ad61e9032925b6b3799f26324e74fd07213dfe69434087396a0ff211" id="Token1216353265" autocomplete="off" />
+                              </div>
+                              <input type="hidden" name="data[UserCurrency][shop_id]" value="insgirl18"
+                                     id="UserCurrencyShopId" />
+                              <div class="input select">
+                                  <select name="data[UserCurrency][currency_code]" class="x_i18nSelectBox">
+                                      <option value="JPY" selected="selected">
+                                          JPY
+                                      </option>
+                                      <option value="USD">
+                                          USD
+                                      </option>
+                                  </select>
+                              </div>
+                              <div style="display:none;">
+                                  <input type="hidden" name="data[_Token][fields]" value="b5ca334540eaa80be2a651e91bddbcd9c4139c18%3AUserCurrency.shop_id" id="TokenFields1418316678" autocomplete="off" />
+                                  <input type="hidden" name="data[_Token][unlocked]" value="" id="TokenUnlocked1377091737" autocomplete="off" />
+                              </div>
+                          </form>
+                      </div>
+                  </div>
+              </div>
+            
+              <div class="footer-link-text mart10 clearfix">
+                  <i class="fa fa-copyright"></i>
+                  insgirl18 |
+                
+                {%- if section.settings.footer_link != blank -%}
+                 {%- for link in section.settings.footer_link.links -%}
+                  <a href="{{ link.url }}">
+                      {{ link.title }}
+                  </a>
+                  |
+                 {%- endfor -%}
+                {%- endif -%}
+              </div>
+            
+          </div>
+      </div>
+  </section>
+</footer>
+
+<div id="page-top" style="display: block;">
+  <a class="btn-floating btn waves-effect waves grey lighten-5">
+    <i class="fa fa-caret-up blue-grey-text text-darken-2"></i>
+  </a>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.footer.name",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "footer_link",
+      "default": "footer",
+      "label": "t:sections.footer.blocks.link_list.settings.menu.label"
+    }
+  ]
+}
+{% endschema %}

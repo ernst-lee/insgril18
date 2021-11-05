@@ -1,0 +1,80 @@
+<section>
+
+  {%- if section.settings.banner1 != blank or section.settings.banner2 != blank -%}
+  <div class="mobile-and-tablet-only clearfix">
+
+    {%- if section.settings.banner1 != blank -%}
+    <div class="top-banner-l">
+      <a href="{{ section.settings.banner1_url }}">
+        <img src="{{ section.settings.banner1 | img_url:'master' }}" alt="">
+      </a>
+    </div>
+    {%- endif -%}
+
+    {%- if section.settings.banner2 != blank -%}
+    <div class="top-banner-r">
+      <a href="{{ section.settings.banner2_url }}">
+        <img src="{{ section.settings.banner2 | img_url:'master' }}" alt="">
+      </a>
+    </div>
+	{%- endif -%}
+    
+  </div>
+  {%- endif -%}
+
+  <div class="mobile-and-tablet-only">
+
+    <div class="paradis-postage">
+      {{ section.settings.text }}
+    </div>
+
+    <div id="phone-search" class="clearfix">
+      <form role="search" method="get" action="{{ routes.search_url }}">
+        <input 
+               class="item-search"
+               type="text"
+               name="q"
+               id="s"
+               placeholder="検索"
+               value="{{ search.terms | escape }}"
+               >
+        <button class="item-search-submit" type="submit"><i class="fa fa-search"></i></button>
+      </form>
+    </div>
+
+  </div>
+
+</section>
+
+{% schema %}
+  {
+    "name": "t:sections.top_phone_search_and_advertisement.name",
+    "settings": [
+		{
+          "type": "image_picker",
+          "id": "banner1",
+          "label": "t:sections.top_phone_search_and_advertisement.settings.banner1.label"
+        },
+		{
+          "type": "url",
+          "id": "banner1_url",
+          "label": "t:sections.top_phone_search_and_advertisement.settings.banner1_url.label"
+        },
+		{
+          "type": "image_picker",
+          "id": "banner2",
+          "label": "t:sections.top_phone_search_and_advertisement.settings.banner2.label"
+        },
+		{
+          "type": "url",
+          "id": "banner2_url",
+          "label": "t:sections.top_phone_search_and_advertisement.settings.banner2_url.label"
+        },
+		{
+          "type": "text",
+          "id": "text",
+          "label": "t:sections.top_phone_search_and_advertisement.settings.html.label"
+        }   
+	]
+  }
+{% endschema %}

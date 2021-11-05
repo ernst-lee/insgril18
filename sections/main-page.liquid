@@ -1,0 +1,20 @@
+<div class="main-right">
+	<section>
+		<h1>
+        	<i class="fa fa-paw dolce-pointcolor" aria-hidden="true"></i>
+          	{{ page.title | escape }}
+      	</h1>
+		<div id="paradis-law" class="area">
+          <div id="law">
+          	{{ page.content }}
+          </div>
+		</div>
+	</section>
+</div>
+
+{% schema %}
+  {
+    "name": "t:sections.main-page.name",
+    "settings": []
+  }
+{% endschema %}

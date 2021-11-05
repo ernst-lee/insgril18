@@ -1,0 +1,608 @@
+{{ 'pc_shop.css' | asset_url | stylesheet_tag }}
+<div id="p_cart" class="wrapper">
+	<header id="mainHeader">
+		<h1 class="title textCenter">
+			<a href="{{ routes.root_url }}">
+				<img src="{{ '6e31444a00393849e177c2f8024ee56a2.png' | asset_url }}&imformat=generic&q=90&im=Resize,width=2048,type=downsize"
+				title="logo">
+			</a>
+		</h1>
+	</header>
+  
+	<form 
+          action="" 
+          method="post "
+          name="form "
+		  onsubmit="return false;"
+          >
+      
+      	{% if cart != empty %}
+		<div class="d_bntBox ">
+			<div class="innerContent ">
+				<a class="btnContinue btnContinue--top " href="{{ routes.all_products_collection_url }}">
+					{{ 'general.continue_shopping' | t }}
+				</a>
+			</div>
+  		</div>
+      	{% endif %}
+      
+      
+         {%- for item in cart.items -%}
+      		<table>
+      		<tbody>
+            <tr class="cart-item" id="CartItem-{{ item.index | plus: 1 }}">
+              <td class="cart-item__media">
+                {% if item.image %}
+                <a href="{{ item.url }}">
+                  <img class="cart-item__image"
+                       src="{{ item.image | img_url: '300x' }}"
+                       alt="{{ item.image.alt | escape }}"
+                       loading="lazy"
+                       width="150"
+                       height="{{ 150 | divided_by: item.image.aspect_ratio | ceil }}"
+                       >
+                </a>
+                {% endif %}
+              </td>
+              <td class="cart-item__details">
+                {%- if section.settings.show_vendor -%}
+                <p class="caption-with-letter-spacing light">{{ item.product.vendor }}</p>
+                {%- endif -%}
+
+                <a href="{{ item.url }}" class="cart-item__name break">{{ item.product.title | escape }}</a>
+
+                {%- if item.product.has_only_default_variant == false or item.properties.size != 0 or item.selling_plan_allocation != nil -%}
+                <dl>
+                  {%- if item.product.has_only_default_variant == false -%}
+                  {%- for option in item.options_with_values -%}
+                  <div class="product-option">
+                    <dt>{{ option.name }}: </dt>
+                    <dd>{{ option.value }}</dd>
+                  </div>
+                  {%- endfor -%}
+                  {%- endif -%}
+
+                  {%- for property in item.properties -%}
+                  {%- assign property_first_char = property.first | slice: 0 -%}
+                  {%- if property.last != blank and property_first_char != '_' -%}
+                  <div class="product-option">
+                    <dt>{{ property.first }}: </dt>
+                    <dd>
+                      {%- if property.last contains '/uploads/' -%}
+                      <a href="{{ property.last }}" target="_blank">
+                        {{ property.last | split: '/' | last }}
+                      </a>
+                      {%- else -%}
+                      {{ property.last }}
+                      {%- endif -%}
+                    </dd>
+                  </div>
+                  {%- endif -%}
+                  {%- endfor -%}
+                </dl>
+
+                <p class="product-option">{{ item.selling_plan_allocation.selling_plan.name }}</p>
+                {%- endif -%}
+
+                <ul class="discounts list-unstyled" role="list" aria-label="{{ 'customer.order.discount' | t }}">
+                  {%- for discount in item.discounts -%}
+                  <li class="discounts__discount">
+                    {{ discount.title }}
+                  </li>
+                  {%- endfor -%}
+                </ul>
+
+                <div class="cart-item__error" id="Line-item-error-{{ item.index | plus: 1 }}" role="alert">
+                  <small class="cart-item__error-text"></small>
+                </div>	
+              </td>
+
+              <td class="cart-item__totals right medium-hide large-up-hide">
+                {{ item.original_price | money }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              </td>  
+
+              <td class="cart-item__quantity">
+                  <input class="quantity__input"
+                         type="number"
+                         name="updates[]"
+                         value="{{ item.quantity }}"
+                         min="0"
+                         aria-label="{{ 'products.product.quantity.input_label' | t: product: item.product.title | escape }}"
+                         id="Quantity-{{ item.index | plus: 1 }}"
+                         data-index="{{ item.index | plus: 1 }}"
+                         >
+              </td>
+
+              <td class="cart-item__totals right small-hide">
+                <div class="cart-item__price-wrapper">
+                  {%- if item.original_line_price != item.final_line_price -%}
+                  <dl class="cart-item__discounted-prices">
+                    <dt class="visually-hidden">
+                      {{ 'products.product.price.regular_price' | t }}
+                    </dt>
+                    <dd>
+                      <s class="cart-item__old-price price price--end">
+                        {{ item.original_line_price | money }}
+                      </s>
+                    </dd>
+                    <dt class="visually-hidden">
+                      {{ 'products.product.price.sale_price' | t }}
+                    </dt>
+                    <dd class="price price--end">
+                      {{ item.final_line_price | money }}
+                    </dd>
+                  </dl>
+                  {%- else -%}
+                  <span class="price price--end">
+                    {{ item.original_line_price | money }}
+                  </span>
+                  {%- endif -%}
+
+                  {%- if item.variant.available and item.unit_price_measurement -%}
+                  <div class="unit-price caption">
+                    <span class="visually-hidden">{{ 'products.product.price.unit_price' | t }}</span>
+                    {{ item.variant.unit_price | money }}
+                    <span aria-hidden="true">/</span>
+                    <span class="visually-hidden">&nbsp;{{ 'accessibility.unit_price_separator' | t }}&nbsp;</span>
+                    {%- if item.variant.unit_price_measurement.reference_value != 1 -%}
+                    {{- item.variant.unit_price_measurement.reference_value -}}
+                    {%- endif -%}
+                    {{ item.variant.unit_price_measurement.reference_unit }}
+                  </div>
+                  {%- endif -%}
+                </div>
+              </td>
+            </tr>
+      		</tbody>
+      		</table>
+            <hr color="pink">
+      	 {%- endfor -%}
+      
+        <div id="orderItems" class="d_cartBox">
+            <div class="header">
+              <h2 id="gtm_cart" class="title">
+                {{ 'sections.cart.title' | t }}
+              </h2>
+            </div>
+
+            <div class="innerContent">
+              	{% if cart == empty %}
+                <div class="row textCenter">
+                      {{ 'sections.cart.empty' | t }}
+                </div>
+              	{% else %}
+              
+              	<table class="d_itemListTable w100p">
+                    <tr class="caption">
+                      <th class="textLeft">商品名</th>
+                      <th></th>
+                      <th class="textRight">値段</th>
+                      <th class="textRight">個数</th>
+                      <th class="textRight w100">小計</th>
+                    </tr>
+                    <tr class="item">
+                      <td>
+                        <img 
+                             class="thumbnail"
+                             src="https://baseec-img-mng.akamaized.net/images/item/origin/27110add15f85b8a81bd8b8c1bcbbc24.jpg?imformat=generic&q=90&im=Resize,width=76,type=normal"
+                             title="thumbnail!"
+                             >
+                      </td>
+                      <td class="itemCol__defaultCart">
+                        <div class="itemCol__defaultCartTitle">
+                          <a 
+                             class="item-title" 
+                             href="https:/ / www.insgirl18.com / items / 43706083 "
+                             target="_blank ">
+                            【期間限定999円だけ！】プルオーバーVネック膝上無地デートワンピース43706083
+                          </a>
+                        </div>
+                        <div class="itemCol__variation ">
+                          種類
+                          <span>
+                            : ホワイト/S
+                          </span>
+                        </div>
+                      </td>
+                      <td class="textRight ">
+                        ¥ 999
+                      </td>
+                      <td>
+                        <div class="textRight ">
+                          <select>
+                            <option value="1 " selected="selected ">
+                              1
+                            </option>
+                            <option value="2 ">
+                              2
+                            </option>
+                            <option value="3 ">
+                              3
+                            </option>
+                            <option value="4 ">
+                              4
+                            </option>
+                          </select>
+                          <p class="textRight delItem ">
+                            <a href="/order/delete_item?shop_id=insgirl18&index=0" class="sub">
+                              削除
+                            </a>
+                          </p>
+                        </div>
+                      </td>
+                      <td class="textRight">
+                        ¥ 999
+                      </td>
+                    </tr>
+                    <tr class="item">
+                      <td>
+                        <img 
+                             class="thumbnail"
+                             src="https://baseec-img-mng.akamaized.net/images/item/origin/27110add15f85b8a81bd8b8c1bcbbc24.jpg?imformat=generic&q=90&im=Resize,width=76,type=normal" 
+                             title="thumbnail ! "
+                             >
+                      </td>
+                      <td class="itemCol__defaultCart ">
+                        <div class="itemCol__defaultCartTitle ">
+                          <a class="item - title " href="https: //www.insgirl18.com/items/43706083"
+                             target="_blank">
+                            【期間限定999円だけ！】プルオーバーVネック膝上無地デートワンピース43706083
+                          </a>
+                        </div>
+                        <div class="itemCol__variation">
+                          種類
+                          <span>
+                            :ホワイト / XL
+                          </span>
+                        </div>
+                      </td>
+                      <td class="textRight">
+                        ¥ 999
+                      </td>
+                      <td>
+                        <div class="textRight">
+                          <select>                                                                                                                                                                                                                                                                                                                                                                        90
+                            <option value="1">
+                              1
+                            </option>
+                            <option value="2">
+                              2
+                            </option>
+                            <option value="3">
+                              3
+                            </option>
+                            <option value="4" selected="selected">
+                              4
+                            </option>                                                                                                                                                                                                                                                                                                                                                                                                     </option>
+                          </select>
+                        <p class="textRight delItem">
+                          <a href="" class="sub">
+                            削除
+                          </a>
+                        </p>
+                    </div>
+                    </td>
+                  <td class="textRight ">
+                    ¥ 3,996
+                  </td>
+                  </tr>
+            	</table>
+
+        		<div class="w100p clearfix">
+                  <div class="subTotalBlock">
+                    <div class="subTotalBlock__list listTable">
+                      <span class="listTable__heading">商品</span>
+                      <span class="listTable__content">¥ 93,361</span>
+                    </div>
+
+                    <div class="subTotalBlock__list listTable">
+                      <span class="listTable__heading">送料</span>
+                      <span class="listTable__content">
+                        <div class="shipping_fee">
+                          <p class="price" data-shipping-fee-total="0">
+                            ¥ 0
+                          </p>
+                        </div>
+                      </span>
+                    </div>
+
+                    <div class="shippingfeeNotice">
+                      <p class="shippingfeeNotice__txt_free">
+                        ¥8, 999以上なので
+                        <span class="emphasis">
+                          国内送料無料
+                        </span>
+                        です。
+                      </p>
+                    </div>
+
+                  </div>
+
+                  <div class="row row--price">
+                    <div class="priceTotal">
+                      <span class="priceTotal__label">
+                        合計
+                      </span>
+                      <span class="priceTotal__price">
+                        ¥93, 361
+                      </span>
+                    </div>
+
+                    <div class="d_checkLabel textRight"></div>
+                  </div>
+
+          		</div>
+      			{% endif %}
+        	</div>
+  
+        </div>
+      
+		<div class="d_bntBox">
+          {% if cart == empty %}
+          	<div class="innerContent">
+				<a href="{{ routes.all_products_collection_url }}" class="btnContinue btnContinue--top">{{ 'general.continue_shopping' | t }}</a>
+			</div>
+          {% else %}
+          <div class="innerContent purchaseButtons purchaseChoices">
+            <a href="" class="gtm_to_input btnPurchase btn--main purchaseChoices__item ">
+              ゲストとして購入
+            </a>
+            <a 
+               href=""
+               class="gtm_to_pay btnPurchase btnPurchase--pay btn--main purchaseChoices__item"
+               >
+              <img 
+                   class="payButton__icon"
+                   src="https://www.insgirl18.com/img/payment/payid_logo_b.png"
+                   alt="PAY ID "
+                   width="62 "
+                   />
+              <span class="payButton__text ">
+                PAY IDで購入
+              </span>
+            </a>
+            
+            <div class="purchaseChoices__item purchaseChoices__item--amazonpay">
+              	<style>
+                  .amazonpay-button-container {
+                    display: grid;
+                    justify-items: stretch;
+                    min-height: 42px;
+                    min-width: 113px;
+                    max-width: 600px;
+                    height: 100%;
+                    width: 100%;
+                    touch-action: manipulation;
+                    max-height: 193px;
+                    position: absolute;
+                    left: 0px;
+                    right: 0px;
+                    top: 0px;
+                    bottom: 0px;
+                  }
+
+                  .amazonpay-button-container-rows {
+                      grid-template-rows: 65% 10% 25%;
+                  }
+
+                  .amazonpay-custom-button-container-rows {
+                      grid-template-rows: 100%;
+                  }
+
+                  .amazonpay-button-view1 {
+                    grid-row: 1/2;
+                    border-radius: 3px;
+                    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4) inset;
+                    border-style: solid;
+                    border-width: 1px;
+                    box-sizing: border-box;
+                    width: 100%;
+                    display: grid;
+                    grid-template-rows: 13% 13% 1fr 1fr 10% 16%;
+                    grid-template-columns: 4% 10% 6% 1fr 6% 10% 4%;
+                    justify-items: center;
+                    justify-self: stretch;
+                    align-self: stretch;
+                  }
+
+                  .amazonpay-button-view1-gold {
+                    border-color: #a88734 #9c7e31 #846a29;
+                    background: linear-gradient(to bottom, #f7dfa5, #f0c14b);
+                  }
+
+                  .amazonpay-button-view1-gray {
+                    border-color: #ADB1B8 #A2A6AC #8D9096;
+                    background: linear-gradient(to bottom, #F7F8FA, #E7E9EC);
+                  }
+
+                  .amazonpay-button-view1-ink {
+                   border-color: #3d444c #2f353b #2c3137;
+                    background: linear-gradient(to bottom, #71777D, #444C54);
+                  }
+
+                  .amazonpay-button-enabled {
+                    cursor: pointer;
+                  }
+
+                  .amazonpay-button-disabled {
+                    cursor: default;
+                    opacity: 0.25;
+                    filter: grayscale(100%);
+                  }
+
+                  .amazonpay-button-view1 .amazonpay-button-sandbox-logo {
+                    grid-row: 2/4;
+                    grid-column: 2/3;
+                  }
+
+                  .amazonpay-button-view1 .amazonpay-button-logo {
+                    grid-row: 3/6;
+                    grid-column: 4/5;
+                  }
+
+                  .amazonpay-button-view1 .amazonpay-signin-button-sandbox-logo {
+                    grid-row: 1/3;
+                    grid-column: 1/2;
+                  }
+
+                  .amazonpay-button-view1 .amazonpay-signin-button-logo {
+                    grid-row: 3/6;
+                    grid-column: 2/7;
+                  }
+
+                  .amazonpay-button-view1 .amazonpay-button-chevrons {
+                    grid-row: 3/5;
+                    grid-column: 6/7;
+                   }
+
+                  .amazonpay-button-view1-gold:active {
+                    background: #f0c14b;
+                    outline: none;
+                    border-color: #e77600;
+                    box-shadow: 0 0 3px 2px rgba(228, 121, 17, 0.5);
+                  }
+                  .amazonpay-button-view1-gray:active {
+                    background: #DCDFE3;
+                    outline: none;
+                    border-color: #e77600;
+                    box-shadow: 0 0 3px 2px rgba(228, 121, 17, 0.5);
+                  }
+                  .amazonpay-button-view1-ink:active {
+                    background: #444C54;
+                    outline: none;
+                    border-color: #32373e #24282d #212429;
+                      box-shadow: 0 0 3px 2px rgba(228, 121, 17, 0.5);
+                  }
+
+                  .amazonpay-button-view1-gold:focus {
+                    outline: none;
+                    border-color: #e77600;
+                    box-shadow: 0 0 3px 2px rgba(228, 121, 17, 0.5);
+                  }
+                  .amazonpay-button-view1-gray:focus {
+                    outline: none;
+                    border-color: #e77600;
+                    box-shadow: 0 0 3px 2px rgba(228, 121, 17, 0.5);
+                  }
+                  .amazonpay-button-view1-ink:focus {
+                    outline: none;
+                    border-color: #32373e #24282d #212429;
+                    box-shadow: 0 0 3px 2px rgba(228, 121, 17, 0.5);
+                  }
+
+                  .amazonpay-button-view1-gold:hover {
+                    background: linear-gradient(to bottom, #f5d78e, #eeb933);
+                  }
+                  .amazonpay-button-view1-gray:hover {
+                    background: linear-gradient(to bottom, #E6E9EF, #D9DCE1);
+                  }
+                  .amazonpay-button-view1-ink:hover {
+                    background: linear-gradient(to bottom,  #64696F, #393F47);
+                  }
+
+                  .amazonpay-button-view2 {
+                    grid-row: 2/3;
+                  }
+
+                  .amazonpay-button-view3 {
+                    grid-row: 3/4;
+                    justify-items: center;
+                    justify-self: stretch;
+                    align-self: stretch;
+                  }
+
+                  .amazonpay-button-view1 .amazonpay-button-sandbox-logo img,
+                  .amazonpay-button-view1 .amazonpay-signin-button-sandbox-logo img,
+                  .amazonpay-button-view1 .amazonpay-button-logo img,
+                  .amazonpay-button-view1 .amazonpay-signin-button-logo img,
+                  .amazonpay-button-view1 .amazonpay-button-chevrons img,
+                  .amazonpay-button-view3 .amazonpay-button-microtext img  {
+                    display: block;
+                    height: 100%;
+                    width: 100%;
+                    user-select: none;
+                    -webkit-touch-callout: none;
+                  }
+
+                  .amazonpay-button-view1 .amazonpay-button-sandbox-logo img,
+                  .amazonpay-button-view1 .amazonpay-signin-button-sandbox-logo img,
+                  .amazonpay-button-view1 .amazonpay-button-logo img,
+                  .amazonpay-button-view1 .amazonpay-signin-button-logo img,
+                  .amazonpay-button-view1 .amazonpay-button-chevrons img  {
+                    object-fit: contain;
+                  }
+
+                  .amazonpay-button-view3 .amazonpay-button-microtext img {
+                    object-fit: contain;
+                  }
+
+                  .animate-chevron .amazonpay-button-chevrons{
+                    -webkit-animation: slide 2s ease-out;
+                    -webkit-animation-direction: running;
+                    -webkit-animation-iteration-count: 3;
+                    -webkit-animation-delay: 0.5s;
+                    animation: slide 2s ease-out;
+                    animation-direction: running;
+                    animation-iteration-count: 3;
+                    animation-delay: 0.5s;
+                   }
+
+                  @keyframes slide {
+                    from {
+                      grid-column: 5/6;
+                      opacity: 1; 
+                    }
+                    10% {
+                      opacity: 0.5;
+                    }
+                    25% {
+                      opacity: 0.1; 
+                    }
+                    50% {
+                      grid-column: 5/7;
+                      opacity: 1;
+                    }
+                    60% {
+                      opacity:0.5
+                    }
+                    75% {
+                      opacity: 0.1; 
+                    }
+                    to {
+                      grid-column: 6/7; 
+                      opacity: 1;
+                    }
+
+                  </style>
+				<div class="amazonPayBtn amazonpay-button-parent-container-checkout-A3EIZPG6KRXRSZ" id="amazon_pay-button-container-bottom" role="button" aria-label="Amazon Pay - Amazonアカウントをお使いください" title="Amazonアカウントに登録されている情報を利用してお支払い" style="position: relative; width: inherit; height: 83.0938px;">
+              		<div class="amazonpay-button-container amazonpay-button-enabled amazonpay-button-container-rows">
+                      <div class="amazonpay-button-view1 amazonpay-button-view1-gold" tabindex="0">
+                        <picture class="amazonpay-button-logo">
+                          <img src="https://m.media-amazon.com/images/G/09/AmazonPay/Maxo/logo._CB452516594_.svg">
+                        </picture>
+                        <picture class="amazonpay-button-chevrons">
+                          <img src="https://m.media-amazon.com/images/G/09/AmazonPay/Maxo/AmazonPay_button_chevron._CB1558391205_.svg">
+                        </picture>
+                      </div>
+                      <div class="amazonpay-button-view2"></div>
+                      <div class="amazonpay-button-view3">
+                        <picture class="amazonpay-button-microtext">
+                          <img src="https://m.media-amazon.com/images/G/09/AmazonPay/Maxo/mt-ja_jp._CB1568869902_.svg">
+                      </picture>
+                      </div>
+                  </div>
+              	</div>
+            </div>
+            
+          </div>
+          {% endif %}
+		</div>
+
+	</form>
+                              
+	<div class="logoBottom ">
+		<a>
+			<img src="https://static.thebase.in/img/logo/logo_gray.png" title="logo"class="logoBottom_image">
+		</a>
+	</div>
+</div>

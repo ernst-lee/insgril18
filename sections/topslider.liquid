@@ -1,0 +1,83 @@
+<section>
+  <div class="clearfix">
+    <div class="top-slider">
+      <div id="pickup-carousel">
+        
+        {%- for block in section.blocks -%}
+        {%- if block.settings.image != blank -%}
+			<div class="carousel-cell">
+                <a href="{{ block.settings.image_url }}">
+                  <img src="{{ block.settings.image | img_url:'master' }}"
+                       alt="{{ block.settings.title }}">
+                </a>
+            </div>
+        {%- endif -%}
+      	{%- endfor -%}
+        
+      </div>
+      <script type="text/javascript">
+        $('#pickup-carousel').flickity({
+          contain: true,
+          wrapAround: true,
+          imagesLoaded: true,
+          draggable: true,
+          prevNextButtons: true,
+          pageDots:  false,
+          accessibility: false,
+          autoPlay: 12000,
+          pauseAutoPlayOnHover: false
+        });
+      </script>
+    </div>
+
+    {%- if section.settings.slider_banner_image != blank -%}
+    <div class="top-banner">
+      <a href="{{ section.settings.slider_banner_image_url }}">
+        <img src="{{ section.settings.slider_banner_image | img_url:'master' }}" alt="">
+      </a>
+    </div>
+    {%- endif -%}
+
+  </div>
+</section>
+{% schema %}
+  {
+    "name": "t:sections.topslider.name",
+    "settings": [
+		{
+            "type": "image_picker",
+            "id": "slider_banner_image",
+            "label": "t:sections.topslider.settings.slider_banner_image.label"
+         },
+		{
+            "type": "url",
+            "id": "slider_banner_image_url",
+            "label": "t:sections.topslider.settings.slider_banner_image_link.label"
+         }
+	],
+	"blocks": [
+      {
+        "type": "column",
+        "name": "t:sections.multicolumn.blocks.column.name",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "t:sections.multicolumn.blocks.column.settings.image.label"
+          },
+		  {
+            "type": "url",
+            "id": "image_url",
+            "label": "t:sections.topslider.settings.image_url.label"
+          },
+ 		  {
+          "type": "text",
+          "id": "title",
+          "default": "Column",
+          "label": "t:sections.multicolumn.blocks.column.settings.title.label"
+          }
+        ]
+      }
+  	]
+  }
+{% endschema %}

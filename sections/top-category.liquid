@@ -1,0 +1,58 @@
+<section>
+  <div id="main-cat">
+    <ul id="appsItemCategoryTag">
+      {%- if section.settings.all_category != blank -%}
+      {%- for link in section.settings.all_category.links -%}
+      <li class="appsItemCategoryTag_child">
+        <a href="{{ link.url }}" class="mainHeaderNavColor">
+          {{ link.title }}
+        </a>
+        
+        {%- if link.links != blank -%}
+        <ul class="appsItemCategoryTag_lowerchild">
+          {%- for childlink in link.links -%}
+          <li>
+            <a href="{{ childlink.url }}" class="mainHeaderNavColor appsItemCategoryTag_lowerLink">
+              {{ childlink.title | escape }}
+            </a>
+          </li>
+		  {%- endfor -%}
+        </ul>
+        {%- endif -%}
+        
+      </li>
+      {%- endfor -%}
+      {%- endif -%}
+      
+    </ul>
+    
+    <script type="text/javascript">
+      $(function() {
+        var nav = $('#main-cat #appsItemCategoryTag');
+        var navTop = nav.offset().top;
+        $('li', nav).hover(function(){
+          $('ul',this).stop().slideDown('fast');
+        },
+                           function(){
+          $('ul',this).stop().slideUp('fast');
+        });
+      });
+    </script>
+    
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "t:sections.top_category.name",
+    "settings": [
+		{
+			"type": "link_list",
+            "id": "all_category",
+			"default":"main-menu",
+            "label": "t:sections.top_category.settings.all_category.label"
+		}
+	]
+  }
+{% endschema %}
+

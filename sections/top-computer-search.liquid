@@ -1,0 +1,37 @@
+<section>
+  <div id="main-search" class="clearfix">
+
+    <form role="search" method="get" action="{{ routes.search_url }}">
+      
+      <input 
+             class="item-search"
+             type="text"
+             name="q"
+             id="s"
+             placeholder="検索"
+             value="{{ search.terms | escape }}"
+             >
+      <button class="item-search-submit" type="submit"><i class="fa fa-search"></i></button>
+      
+    </form>
+
+    <div class="paradis-postage">
+      
+      {{ section.settings.text }}
+     
+  	 </div>
+
+	</div>
+</section>
+{% schema %}
+  {
+    "name": "t:sections.top_computer_search.name",
+    "settings": [
+     	 {
+          "type": "text",
+          "id": "text",
+          "label": "t:sections.top_computer_search.settings.html.label"
+        }   
+     ]
+  }
+{% endschema %}

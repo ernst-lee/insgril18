@@ -1,0 +1,115 @@
+<div class="main-right">
+  
+  <div id="sidebar" class="menu-phone">
+    
+    {%- if section.settings.home_left_buttom_category != blank -%}
+    <section>
+      <h1>
+        <i class="fa fa-paw dolce-pointcolor" aria-hidden="true"></i>
+        Category
+      </h1>
+      <div class="area">
+        <ul id="appsItemCategoryTag">
+          
+          {%- for buttom_category in section.settings.home_left_buttom_category.links -%}
+          <li class="appsItemCategoryTag_child">
+            <a href="{{ buttom_category.url }}" class="mainHeaderNavColor">
+              {{ buttom_category.title }}
+            </a>
+            
+            {%- if buttom_category.links != blank -%}
+            <ul class="appsItemCategoryTag_lowerchild">
+              {%- for childlink in buttom_category.links -%}
+              <li>
+                <a href="{{ childlink.url }}" class="mainHeaderNavColor appsItemCategoryTag_lowerLink">
+                  {{ childlink.title | escape }}
+                </a>
+              </li>
+              {%- endfor -%}
+            </ul>
+            {%- endif -%}
+            
+          </li>
+          {%- endfor -%}
+          
+          
+        </ul>
+      </div>
+    </section>
+     {%- endif -%}
+    
+    {%-if section.blocks != blank -%}
+    <section>
+      <h1>
+        <i class="fa fa-paw dolce-pointcolor" aria-hidden="true"></i>
+        Information
+      </h1>
+      <div class="area">
+        <ul>
+          {%- for block in section.blocks -%}
+          {%- if block.type == 'information_column' -%}
+          <li class="{{ block.settings.information_class }}">
+            <span class="webicon-pd font_reset">
+              <a href="{{ block.settings.information_url }}">{{ block.settings.information_name }}</a>
+            </span>
+          </li>
+          {%- endif -%}
+          {%- endfor -%}
+        </ul>
+      </div>
+    </section>
+    {%- endif -%}
+    
+  </div>
+</div>
+
+<div id="shopinfo">
+  <div class="divider"></div>
+  <div class="brand-logo-bottom">
+    <a href="{{ routes.root_url }}">
+      <span class="dolce_logo_color">
+        <img class="logoImage" src="{{'6e31444a00393849e177c2f8024ee56a2.png' | asset_url }}" alt="insgirl18">
+      </span>
+    </a>
+  </div>
+  <div class="mart15">
+   	{% render 'propaganda' %}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "t:sections.buttom_right.name",
+    "settings": [
+		{
+			"type": "link_list",
+            "id": "home_left_buttom_category",
+            "label": "t:sections.buttom_right.settings.home_left_buttom_category.label"
+		}
+	],
+    "blocks": [
+		{
+        "type": "information_column",
+        "name": "t:sections.buttom_right.settings.information_column.label",
+        "settings": [
+          {
+            "type": "text",
+            "id": "information_name",
+            "label": "t:sections.index_home.settings.information_name.label"
+          },
+		  {
+            "type": "url",
+            "id": "information_url",
+            "label": "t:sections.index_home.settings.information_url.label"
+          },
+ 		  {
+          "type": "text",
+          "id": "information_class",
+          "default": "webicon-about",
+          "label": "t:sections.index_home.settings.information_class.label"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
