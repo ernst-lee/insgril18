@@ -181,6 +181,7 @@
                       <th class="textRight w100">{{ 'sections.cart.product_total_price' | t }}</th>
                     </tr>
                   
+                  	{%- for item in cart.items -%}
                     <tr class="item">
                       <td>
                         <img 
@@ -235,7 +236,7 @@
                         ¥ 999
                       </td>
                     </tr>
-                   	
+                   	{%- endfor -%}
             	</table>
 
         		<div class="w100p clearfix">
