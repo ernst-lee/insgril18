@@ -82,7 +82,7 @@
 -->
                     <div id="itemSelect">
                           {%- unless product.has_only_default_variant -%}
-                          <variant-selects>
+                          <variant-selects data-section="{{ section.id }}">
                           {%- for option in product.options_with_values -%}
                           <div id="variationSelectWrap" class="purchaseElement" >
                             <label for="valiationSelect">
