@@ -201,18 +201,19 @@
                             {{ item.product.title | escape }}
                           </a>
                         </div>
+                        
+                        {%- for property in item.properties -%}
+                        {%- assign property_first_char = property.first | slice: 0 -%}
+                        {%- if property.last != blank and property_first_char != '_' -%}
                         <div class="itemCol__variation ">
                           種類
                           <span>
                             : ホワイト/S
                           </span>
                         </div>
-                        <div class="itemCol__variation ">
-                          種類
-                          <span>
-                            : ホワイト/S
-                          </span>
-                        </div>
+                        {%- endif -%}
+                  		{%- endfor -%}
+                        
                       </td>
                       <td class="textRight ">
                         ¥ 999
