@@ -243,7 +243,12 @@
                           <select>
                             
                             {%- for number in (1..100) -%}
-                            <option value="{{ number }}" selected="selected">
+                            <option 
+                                    value="{{ number }}"
+                                    {% if item.quantity == number %}
+                                    selected="selected"
+                                    {% endif %}
+                                    >
                               {{ number }}
                             </option>
                             {%- endfor -%}
