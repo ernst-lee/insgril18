@@ -200,6 +200,7 @@
       "product_price": "値段",
       "product_number": "個数",
       "product_total_price": "小計",
+      "product_delete": "削除",
       "caption": "カートアイテム",
       "remove_title": "{{ title }}を削除する",
       "subtotal": "小計",
