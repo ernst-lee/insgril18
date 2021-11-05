@@ -197,6 +197,9 @@
     "cart": {
       "title": "カートの中身",
       "product_name": "商品名",
+      "product_price": "値段",
+      "product_number": "個数",
+      "product_total_price": "小計",
       "caption": "カートアイテム",
       "remove_title": "{{ title }}を削除する",
       "subtotal": "小計",
