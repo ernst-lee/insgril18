@@ -184,11 +184,13 @@
                   	{%- for item in cart.items -%}
                     <tr class="item">
                       <td>
+                        {% if item.image %}
                         <img 
                              class="thumbnail"
                              src="{{ item.image | img_url: '76x76' }}"
                              title="thumbnail!"
                              >
+                        {% endif %}
                       </td>
                       <td class="itemCol__defaultCart">
                         <div class="itemCol__defaultCartTitle">
