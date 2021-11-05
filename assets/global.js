@@ -628,7 +628,6 @@ class VariantSelects extends HTMLElement {
     const productForms = document.querySelectorAll(`#product-form-${this.dataset.section}, #product-form-installment`);
     productForms.forEach((productForm) => {
       const input = productForm.querySelector('input[name="id"]');
-      console.log(input);
       input.value = this.currentVariant.id;
       input.dispatchEvent(new Event('change', { bubbles: true }));
       console.log(input);
