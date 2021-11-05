@@ -254,7 +254,7 @@
                           </select>
                             
                           <cart-remove-button id="Remove-{{ item.index | plus: 1 }}" data-index="{{ item.index | plus: 1 }}" class="textRight delItem ">
-                            <a href="/order/delete_item?shop_id=insgirl18&index=0" class="sub">
+                            <a href="{{ item.url_to_remove }}" class="sub">
                               削除
                             </a>
                           </cart-remove-button>
