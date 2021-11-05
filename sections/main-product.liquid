@@ -93,16 +93,6 @@
                                 <i class="mdi-navigation-arrow-drop-down active">
                                 </i>
                               
-                              <!--
-                                <select name="id" id="valiationSelect Option-{{ section.id }}-{{ forloop.index0 }}" class="initialized">
-                                  {% for variant in product.variants %}
-                                    <option value="{{ variant.id }}">
-                                      {{ variant.title }}
-                                  	</option>
-                                  {% endfor%}
-                                </select>
-								-->
-
                               	<select id="Option-{{ section.id }}-{{ forloop.index0 }}" class="select__select" name="options[{{ option.name | escape }}]" form="product-form-{{ section.id }}">
                                   {%- for value in option.values -%}
                                     <option value="{{ value | escape }}" {% if option.selected_value == value %}selected="selected"{% endif %}>
