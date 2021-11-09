@@ -54,14 +54,15 @@ class CartItems extends HTMLElement {
   updateQuantity(line, quantity, name) {
 
     this.enableLoading(line);
-return false;
+
     const body = JSON.stringify({
       line,
       quantity,
       sections: this.getSectionsToRender().map((section) => section.section),
       sections_url: window.location.pathname
     });
-
+console.log(body);
+    return false;
     fetch(`${routes.cart_change_url}`, {...fetchConfig(), ...{ body }})
       .then((response) => {
         return response.text();
