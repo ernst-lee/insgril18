@@ -2,7 +2,7 @@ class CartItems extends HTMLElement {
   constructor() {
     super();
     this.lineItemStatusElement = document.getElementById('shopping-cart-line-item-status');
-	console.log(123);
+
     this.currentItemCount = Array.from(this.querySelectorAll('[name="updates[]"]'))
       .reduce((total, quantityInput) => total + parseInt(quantityInput.value), 0);
 
