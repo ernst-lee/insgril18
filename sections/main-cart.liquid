@@ -53,7 +53,7 @@
                     </tr>
                   
                   	{%- for item in cart.items -%}
-                    <tr class="item">
+                    <tr class="item" id="CartItem-{{ item.index | plus: 1 }}">
                       <td>
                         {% if item.image %}
                         <img 
