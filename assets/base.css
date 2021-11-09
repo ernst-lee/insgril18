@@ -1,3 +1,6 @@
+select {
+	width: % !important;
+}
 
 :root,
 .color-background-1 {
