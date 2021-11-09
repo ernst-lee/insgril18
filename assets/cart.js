@@ -9,7 +9,7 @@ function debounce(fn, wait) {
 class CartItems extends HTMLElement {
   constructor() {
     super();
-    this.lineItemStatusElement = document.getElementById('shopping-cart-line-item-status');
+    //this.lineItemStatusElement = document.getElementById('shopping-cart-line-item-status');
 	
     this.currentItemCount = Array.from(this.querySelectorAll('[name="updates[]"]'))
       .reduce((total, quantityInput) => total + parseInt(quantityInput.value), 0);
@@ -123,7 +123,7 @@ return false;
     document.getElementById('main-cart-items').classList.add('cart__items--disabled');
     this.querySelectorAll(`#CartItem-${line} .loading-overlay`).forEach((overlay) => overlay.classList.remove('hidden'));
     document.activeElement.blur();
-    this.lineItemStatusElement.setAttribute('aria-hidden', false);
+    //this.lineItemStatusElement.setAttribute('aria-hidden', false);
   }
 
   disableLoading() {
