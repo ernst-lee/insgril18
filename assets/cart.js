@@ -15,6 +15,7 @@ class CartItems extends HTMLElement {
       .reduce((total, quantityInput) => total + parseInt(quantityInput.value), 0);
 
     this.debouncedOnChange = debounce((event) => {
+      console.log('debouncedOnChange');
       this.onChange(event);
     }, 300);
 
