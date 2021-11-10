@@ -66,6 +66,7 @@ class CartItems extends HTMLElement {
       line,
       quantity,
       //sections: this.getSectionsToRender().map((section) => section.section),
+      sections:12312333,
       sections_url: window.location.pathname
     });
 
