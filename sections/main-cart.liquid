@@ -230,17 +230,25 @@
                             {%- endif -%}
                           </div>
 
-                          <small class="tax-note caption-large rte">
+                          <div class="subTotalBlock__list listTable">
                             {%- if cart.taxes_included and shop.shipping_policy.body != blank -%}
+                            <span class="listTable__heading">
                             {{ 'sections.cart.taxes_included_and_shipping_policy_html' | t: link: shop.shipping_policy.url }}
+                            </span>
                             {%- elsif cart.taxes_included -%}
+                            <span class="listTable__heading">
                             {{ 'sections.cart.taxes_included_but_shipping_at_checkout' | t }}
+                            </span>
                             {%- elsif shop.shipping_policy.body != blank -%}
+                            <span class="listTable__heading">
                             {{ 'sections.cart.taxes_and_shipping_policy_at_checkout_html' | t: link: shop.shipping_policy.url }}
+                            </span>
                             {%- else -%}
+                            <span class="listTable__heading">
                             {{ 'sections.cart.taxes_and_shipping_at_checkout' | t }}
+                            </span>
                             {%- endif -%}
-                          </small>
+                          </div>
                         </div>
                       {%- else -%}
                         <div class="cart__ctas" {{ block.shopify_attributes }}>
