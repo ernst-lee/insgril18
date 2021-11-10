@@ -48,7 +48,7 @@
               
               	<cart-items>
                 <div class="cart__items" id="main-cart-items" data-id="{{ section.id }}">
-              	<table class="d_itemListTable w100p">
+              	<table class="d_itemListTable w100p js-contents">
                     <tr class="caption">
                       <th class="textLeft">{{ 'sections.cart.product_name' | t }}</th>
                       <th></th>
@@ -198,7 +198,7 @@
                 </div>
               	</cart-items>
 
-        		<div id="main-cart-footer" class="w100p clearfix">
+        		<div id="main-cart-footer" class="w100p clearfix js-contents-footer">
                   
 
                   {% for block in section.blocks %}
