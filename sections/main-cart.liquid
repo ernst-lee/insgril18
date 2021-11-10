@@ -5,7 +5,7 @@
 {{ 'component-cart-items.css' | asset_url | stylesheet_tag }}
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
-<div id="p_cart" class="wrapper">
+<div id="p_cart" class="wrapper" data-id="{{ section.id }}" id="main-cart-content">
 	<header id="mainHeader">
 		<h1 class="title textCenter">
 			<a href="{{ routes.root_url }}">
