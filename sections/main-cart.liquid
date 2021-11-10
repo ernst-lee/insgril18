@@ -39,7 +39,7 @@
               </h2>
             </div>
 
-            <div class="innerContent js-contents">
+            <div class="innerContent">
               	{% if cart == empty %}
                 <div class="row textCenter">
                       {{ 'sections.cart.empty' | t }}
@@ -48,7 +48,7 @@
               
               	<cart-items>
                 <div class="cart__items" id="main-cart-items" data-id="{{ section.id }}">
-              	<table class="d_itemListTable w100p">
+              	<table class="d_itemListTable w100p js-contents">
                     <tr class="caption">
                       <th class="textLeft">{{ 'sections.cart.product_name' | t }}</th>
                       <th></th>
