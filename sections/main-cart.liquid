@@ -212,44 +212,56 @@
                               <span class="listTable__heading">商品</span>
                               <span class="listTable__content">{{ cart.total_price | money_with_currency }}</span>
                           	</div>
+                          
+                            <div>
+                              {%- if cart.cart_level_discount_applications.size > 0 -%}
+                              <ul class="discounts list-unstyled" role="list" aria-label="{{ 'customer.order.discount' | t }}">
+                                {%- for discount in cart.cart_level_discount_applications -%}
+                                <li class="discounts__discount discounts__discount--end">
+                                  {%- render 'icon-discount' -%}
+                                  {{ discount.title }}
+                                  (-{{ discount.total_allocated_amount | money }})
+                                </li>
+                                {%- endfor -%}
+                              </ul>
+                              {%- endif -%}
+                            </div>
+
+                            <div class="subTotalBlock__list listTable">
+                              {%- if cart.taxes_included and shop.shipping_policy.body != blank -%}
+                              <span class="listTable__heading">
+                                {{ 'sections.cart.taxes_included_and_shipping_policy_html' | t: link: shop.shipping_policy.url }}
+                              </span>
+                              {%- elsif cart.taxes_included -%}
+                              <span class="listTable__heading">
+                                {{ 'sections.cart.taxes_included_but_shipping_at_checkout' | t }}
+                              </span>
+                              {%- elsif shop.shipping_policy.body != blank -%}
+                              <span class="listTable__heading">
+                                {{ 'sections.cart.taxes_and_shipping_policy_at_checkout_html' | t: link: shop.shipping_policy.url }}
+                              </span>
+                              {%- else -%}
+                              <span class="listTable__heading">
+                                {{ 'sections.cart.taxes_and_shipping_at_checkout' | t }}
+                              </span>
+                              {%- endif -%}
+                            </div>
                         </div>
                   
-                        <div class="js-contents" {{ block.shopify_attributes }}>
-
-                          <div>
-                            {%- if cart.cart_level_discount_applications.size > 0 -%}
-                            <ul class="discounts list-unstyled" role="list" aria-label="{{ 'customer.order.discount' | t }}">
-                              {%- for discount in cart.cart_level_discount_applications -%}
-                              <li class="discounts__discount discounts__discount--end">
-                                {%- render 'icon-discount' -%}
-                                {{ discount.title }}
-                                (-{{ discount.total_allocated_amount | money }})
-                              </li>
-                              {%- endfor -%}
-                            </ul>
-                            {%- endif -%}
-                          </div>
-
-                          <div class="subTotalBlock__list listTable">
-                            {%- if cart.taxes_included and shop.shipping_policy.body != blank -%}
-                            <span class="listTable__heading">
-                            {{ 'sections.cart.taxes_included_and_shipping_policy_html' | t: link: shop.shipping_policy.url }}
-                            </span>
-                            {%- elsif cart.taxes_included -%}
-                            <span class="listTable__heading">
-                            {{ 'sections.cart.taxes_included_but_shipping_at_checkout' | t }}
-                            </span>
-                            {%- elsif shop.shipping_policy.body != blank -%}
-                            <span class="listTable__heading">
-                            {{ 'sections.cart.taxes_and_shipping_policy_at_checkout_html' | t: link: shop.shipping_policy.url }}
-                            </span>
-                            {%- else -%}
-                            <span class="listTable__heading">
-                            {{ 'sections.cart.taxes_and_shipping_at_checkout' | t }}
-                            </span>
-                            {%- endif -%}
-                          </div>
-                        </div>
+                    
+                        
+                  
+ 							<div class="subTotalBlock__list listTable">
+                              <span class="listTable__heading">送料</span>
+                              <span class="listTable__content">
+                                <div class="shipping_fee">
+                                  <p class="price" data-shipping-fee-total="0">
+                                    ¥ 0
+                                  </p>
+                                </div>
+                              </span>
+                                </div>
+                  
                       {%- else -%}
                         <div class="cart__ctas" {{ block.shopify_attributes }}>
                           <noscript>
@@ -271,35 +283,6 @@
                     {%- endcase -%}
                   {% endfor %}
                   
-                  <div class="subTotalBlock">
-                    <div class="subTotalBlock__list listTable">
-                      <span class="listTable__heading">商品</span>
-                      <span class="listTable__content">¥ 93,361</span>
-                    </div>
-
-                    <div class="subTotalBlock__list listTable">
-                      <span class="listTable__heading">送料</span>
-                      <span class="listTable__content">
-                        <div class="shipping_fee">
-                          <p class="price" data-shipping-fee-total="0">
-                            ¥ 0
-                          </p>
-                        </div>
-                      </span>
-                    </div>
-
-                    <div class="shippingfeeNotice">
-                      <p class="shippingfeeNotice__txt_free">
-                        ¥8, 999以上なので
-                        <span class="emphasis">
-                          国内送料無料
-                        </span>
-                        です。
-                      </p>
-                    </div>
-
-                  </div>
-
                   <div class="row row--price">
                     <div class="priceTotal">
                       <span class="priceTotal__label">
