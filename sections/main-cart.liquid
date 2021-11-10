@@ -265,7 +265,17 @@
                             </button>
                           </noscript>
 
-                          <button type="submit" id="checkout" class="button innerContent" name="checkout"{% if cart == empty %} disabled{% endif %} form="cart">
+                          <button 
+                                  type="submit"
+                                  id="checkout"
+                                  class="button innerContent"
+                                  name="checkout"
+                                  {% if cart == empty %}
+                                  disabled
+                                  {% endif %}
+                                  form="cart"
+                                  style:"background-color:#11beae"
+                                  >
                             {{ 'sections.cart.checkout' | t }}
                           </button>
                         </div>
