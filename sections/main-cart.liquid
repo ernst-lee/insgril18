@@ -208,44 +208,44 @@
                       {%- when 'subtotal' -%}
                   
                         <div class="subTotalBlock">
-                            <div class="subTotalBlock__list listTable">
-                              <span class="listTable__heading">商品</span>
-                              <span class="listTable__content">{{ cart.total_price | money_with_currency }}</span>
-                          	</div>
-                          
-                            <div>
-                              {%- if cart.cart_level_discount_applications.size > 0 -%}
-                              <ul class="discounts list-unstyled" role="list" aria-label="{{ 'customer.order.discount' | t }}">
-                                {%- for discount in cart.cart_level_discount_applications -%}
-                                <li class="discounts__discount discounts__discount--end">
-                                  {%- render 'icon-discount' -%}
-                                  {{ discount.title }}
-                                  (-{{ discount.total_allocated_amount | money }})
-                                </li>
-                                {%- endfor -%}
-                              </ul>
-                              {%- endif -%}
-                            </div>
+                          <div class="subTotalBlock__list listTable">
+                            <span class="listTable__heading">商品</span>
+                            <span class="listTable__content">{{ cart.total_price | money_with_currency }}</span>
+                          </div>
 
-                            <div class="subTotalBlock__list listTable">
-                              {%- if cart.taxes_included and shop.shipping_policy.body != blank -%}
-                              <span class="listTable__heading">
-                                {{ 'sections.cart.taxes_included_and_shipping_policy_html' | t: link: shop.shipping_policy.url }}
-                              </span>
-                              {%- elsif cart.taxes_included -%}
-                              <span class="listTable__heading">
-                                {{ 'sections.cart.taxes_included_but_shipping_at_checkout' | t }}
-                              </span>
-                              {%- elsif shop.shipping_policy.body != blank -%}
-                              <span class="listTable__heading">
-                                {{ 'sections.cart.taxes_and_shipping_policy_at_checkout_html' | t: link: shop.shipping_policy.url }}
-                              </span>
-                              {%- else -%}
-                              <span class="listTable__heading">
-                                {{ 'sections.cart.taxes_and_shipping_at_checkout' | t }}
-                              </span>
-                              {%- endif -%}
-                            </div>
+                          <div>
+                            {%- if cart.cart_level_discount_applications.size > 0 -%}
+                            <ul class="discounts list-unstyled" role="list" aria-label="{{ 'customer.order.discount' | t }}">
+                              {%- for discount in cart.cart_level_discount_applications -%}
+                              <li class="discounts__discount discounts__discount--end">
+                                {%- render 'icon-discount' -%}
+                                {{ discount.title }}
+                                (-{{ discount.total_allocated_amount | money }})
+                              </li>
+                              {%- endfor -%}
+                            </ul>
+                            {%- endif -%}
+                          </div>
+
+                          <div class="subTotalBlock__list listTable">
+                            {%- if cart.taxes_included and shop.shipping_policy.body != blank -%}
+                            <span class="listTable__heading">
+                              {{ 'sections.cart.taxes_included_and_shipping_policy_html' | t: link: shop.shipping_policy.url }}
+                            </span>
+                            {%- elsif cart.taxes_included -%}
+                            <span class="listTable__heading">
+                              {{ 'sections.cart.taxes_included_but_shipping_at_checkout' | t }}
+                            </span>
+                            {%- elsif shop.shipping_policy.body != blank -%}
+                            <span class="listTable__heading">
+                              {{ 'sections.cart.taxes_and_shipping_policy_at_checkout_html' | t: link: shop.shipping_policy.url }}
+                            </span>
+                            {%- else -%}
+                            <span class="listTable__heading">
+                              {{ 'sections.cart.taxes_and_shipping_at_checkout' | t }}
+                            </span>
+                            {%- endif -%}
+                          </div>
                         </div>
                   
                     
