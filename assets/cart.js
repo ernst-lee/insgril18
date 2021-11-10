@@ -72,9 +72,11 @@ class CartItems extends HTMLElement {
 
     fetch(`${routes.cart_change_url}`, {...fetchConfig(), ...{ body }})
       .then((response) => {
+      console.log(1);
         return response.text();
       })
       .then((state) => {
+      console.log(2);
         const parsedState = JSON.parse(state);
         this.classList.toggle('is-empty', parsedState.item_count === 0);
         const cartFooter = document.getElementById('main-cart-footer');
