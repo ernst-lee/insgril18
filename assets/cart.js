@@ -51,7 +51,7 @@ class CartItems extends HTMLElement {
         selector: '.shopify-section'
       },
       {
-        id: 'main-cart-footer',
+        id: 'main-cart-content',
         section: document.getElementById('main-cart-content').dataset.id,
         selector: '.js-contents',
       }
