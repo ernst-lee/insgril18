@@ -22,7 +22,6 @@ class CartItems extends HTMLElement {
       .reduce((total, quantityInput) => total + parseInt(quantityInput.value), 0);
 
     this.debouncedOnChange = debounce((event) => {
-      console.log('debouncedOnChange');
       this.onChange(event);
     }, 300);
 
@@ -68,8 +67,7 @@ class CartItems extends HTMLElement {
       sections: this.getSectionsToRender().map((section) => section.section),
       sections_url: window.location.pathname
     });
-// console.log(body);
-//     return false;
+
     fetch(`${routes.cart_change_url}`, {...fetchConfig(), ...{ body }})
       .then((response) => {
         return response.text();
