@@ -68,8 +68,8 @@ class CartItems extends HTMLElement {
       sections: this.getSectionsToRender().map((section) => section.section),
       sections_url: window.location.pathname
     });
-console.log(body);
-    return false;
+// console.log(body);
+//     return false;
     fetch(`${routes.cart_change_url}`, {...fetchConfig(), ...{ body }})
       .then((response) => {
         return response.text();
@@ -77,7 +77,7 @@ console.log(body);
       .then((state) => {
         const parsedState = JSON.parse(state);
         this.classList.toggle('is-empty', parsedState.item_count === 0);
-        const cartFooter = document.getElementById('main-cart-footer');
+        const cartFooter = document.getElementById('main-cart-content');
 
         if (cartFooter) cartFooter.classList.toggle('is-empty', parsedState.item_count === 0);
 
