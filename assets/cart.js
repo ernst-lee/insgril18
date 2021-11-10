@@ -38,7 +38,7 @@ class CartItems extends HTMLElement {
         id: 'main-cart-items',
         section: document.getElementById('main-cart-items').dataset.id,
         selector: '.js-contents',
-      }
+      },
 //       {
 //         id: 'cart-icon-bubble',
 //         section: 'cart-icon-bubble',
@@ -50,10 +50,10 @@ class CartItems extends HTMLElement {
 //         selector: '.shopify-section'
 //       },
 //       {
-//         id: 'main-cart-footer',
-//         section: document.getElementById('main-cart-footer').dataset.id,
-//         selector: '.js-contents',
-//       }
+        id: 'main-cart-footer',
+        section: document.getElementById('main-cart-footer').dataset.id,
+        selector: '.js-contents',
+      }
     ];
   }
 
