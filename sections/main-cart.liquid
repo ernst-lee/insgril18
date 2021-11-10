@@ -201,7 +201,6 @@
         		<div id="main-cart-footer" class="w100p clearfix js-contents">
                   
                   {% for block in section.blocks %}
-                  1
                     {%- case block.type -%}
                       {%- when '@app' -%}
                         {% render block %}
@@ -251,11 +250,11 @@
                           </button>
                         </div>
 
-                        {%- if additional_checkout_buttons -%}
+                        
                           <div class="cart__dynamic-checkout-buttons additional-checkout-buttons">
                             {{ content_for_additional_checkout_buttons }}
                           </div>
-                        {%- endif -%}
+                        
                     {%- endcase -%}
                   {% endfor %}
                   
