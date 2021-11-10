@@ -258,14 +258,14 @@
                         </div>
                         
                       {%- else -%}
-                        <div class="innerContent purchaseButtons purchaseChoices" {{ block.shopify_attributes }}>
+                        <div class="cart__ctas" {{ block.shopify_attributes }}>
                           <noscript>
                             <button type="submit" class="cart__update-button button button--secondary" form="cart">
                               {{ 'sections.cart.update' | t }}
                             </button>
                           </noscript>
 
-                          <button type="submit" id="checkout" class=" innerContent" name="checkout"{% if cart == empty %} disabled{% endif %} form="cart">
+                          <button type="submit" id="checkout" class="cart__checkout-button button innerContent" name="checkout"{% if cart == empty %} disabled{% endif %} form="cart">
                             {{ 'sections.cart.checkout' | t }}
                           </button>
                         </div>
