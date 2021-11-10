@@ -65,11 +65,11 @@ class CartItems extends HTMLElement {
     const body = JSON.stringify({
       line,
       quantity,
-      //sections: this.getSectionsToRender().map((section) => section.section),
-      sections:12312333,
+      sections: this.getSectionsToRender().map((section) => section.section),
       sections_url: window.location.pathname
     });
-
+console.log(body);
+    return false;
     fetch(`${routes.cart_change_url}`, {...fetchConfig(), ...{ body }})
       .then((response) => {
         return response.text();
