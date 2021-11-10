@@ -198,9 +198,8 @@
                 </div>
               	</cart-items>
 
-        		<div id="main-cart-footer" class="w100p clearfix">
-                  <div class="js-contents-footer">
-
+        		<div id="main-cart-footer" class="w100p clearfix js-contents-footer">
+                  
                   {% for block in section.blocks %}
                     {%- case block.type -%}
                       {%- when '@app' -%}
@@ -281,7 +280,6 @@
       
           		</div>
       			{% endif %}
-              </div>
         	</div>
   
         </div>
