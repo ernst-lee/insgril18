@@ -301,6 +301,7 @@
 				<a href="{{ routes.all_products_collection_url }}" class="btnContinue btnContinue--top">{{ 'general.continue_shopping' | t }}</a>
 			</div>
           {% else %}
+          
           <div class="innerContent purchaseButtons purchaseChoices">
             <a href="" class="gtm_to_input btnPurchase btn--main purchaseChoices__item ">
               ゲストとして購入
@@ -553,6 +554,7 @@
             </div>
             
           </div>
+          
           {% endif %}
 		</div>
 
@@ -560,7 +562,7 @@
                               
 	<div class="logoBottom ">
 		<a>
-			<img src="https://static.thebase.in/img/logo/logo_gray.png" title="logo"class="logoBottom_image">
+			<img src="{{ "logo_gray.png" | asset_url }}" title="logo"class="logoBottom_image">
 		</a>
 	</div>
 </div>
