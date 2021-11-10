@@ -89,7 +89,7 @@ class CartItems extends HTMLElement {
 
           elementToReplace.innerHTML =
             this.getSectionInnerHTML(parsedState.sections[section.section], section.selector);
-          console.log(elementToReplace);
+          console.log(elementToReplace.innerHTML);
         }));
 
         this.updateLiveRegions(line, parsedState.item_count);
