@@ -213,33 +213,17 @@
                             <span class="listTable__content">{{ cart.total_price | money_with_currency }}</span>
                           </div>
 
-                          <div>
-                            {%- if cart.cart_level_discount_applications.size > 0 -%}
-                            <ul class="discounts list-unstyled" role="list" aria-label="{{ 'customer.order.discount' | t }}">
-                              {%- for discount in cart.cart_level_discount_applications -%}
-                              <li class="discounts__discount discounts__discount--end">
-                                {%- render 'icon-discount' -%}
-                                {{ discount.title }}
-                                (-{{ discount.total_allocated_amount | money }})
-                              </li>
-                              {%- endfor -%}
-                            </ul>
-                            {%- endif -%}
-                          </div>
-                          
-                          <div class="subTotalBlock__list listTable">
-                              <span class="listTable__heading">送料</span>
-                              <span class="listTable__content">
-                                <div class="shipping_fee">
-                                  <p class="price" data-shipping-fee-total="0">
-                                    ¥ 0
-                                  </p>
-                                </div>
-                              </span>
-                            
-                          </div>
-             
 
+                          {%- if cart.cart_level_discount_applications.size > 0 -%}
+                          {%- for discount in cart.cart_level_discount_applications -%}
+                          <div class="subTotalBlock__list listTable">
+                            <span class="listTable__heading">{{ discount.title }}</span>
+                            <span class="listTable__content">{{ discount.total_allocated_amount | money }}</span>
+                          </div>
+                          {%- endfor -%}
+                          {%- endif -%}
+
+                          
                           <div class="subTotalBlock__list listTable">
                             {%- if cart.taxes_included and shop.shipping_policy.body != blank -%}
                             <span class="listTable__heading">
