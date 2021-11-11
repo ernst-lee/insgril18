@@ -33,7 +33,14 @@
                      {% for block in section.blocks %}
                     	{%- case block.type -%}
                       		{%- when 'subtotal' -%}
-                     			123
+                     			{%- if cart.cart_level_discount_applications.size > 0 -%}
+                                {%- for discount in cart.cart_level_discount_applications -%}
+                     			<tr> 
+                                   <th class="cartListHeader">{{ discount.title }}</th> 
+                                   <td> &yen; {{ discount.total_allocated_amount | money }} </td> 
+                                </tr> 
+                                {%- endfor -%}
+                                {%- endif -%}
                      	{%- endcase -%}
                      {% endfor %}
                       <tr> 
