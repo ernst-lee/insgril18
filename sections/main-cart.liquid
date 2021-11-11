@@ -16,7 +16,11 @@
   	<div> 
       	<a href="{{ routes.all_products_collection_url }}" class="btnContinue">{{ 'general.continue_shopping' | t }}</a> 
   	</div>
-    <form action="/cart/add/insgirl18" method="post" name="form" onsubmit="return false;" class="mainForm"> 
+    <form action="{{ routes.cart_url }}"
+          method="post"
+          id="cart"
+          class="js-all-content mainForm" 
+          > 
        <main> 
           <section id="" class="l_simpleBox"> 
              <div class="header"> 
