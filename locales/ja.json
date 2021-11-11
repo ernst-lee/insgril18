@@ -206,6 +206,7 @@
       "remove_title": "{{ title }}を削除する",
       "subtotal": "小計",
       "subtotal_product": "商品",
+      "subtotal_product_sp": "商品合計",
       "new_subtotal": "新しい小計",
       "note": "注文に関する特別な指示・備考",
       "checkout": "ご購入手続きへ",
