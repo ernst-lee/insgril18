@@ -124,7 +124,17 @@
           </section> 
 
           <div class="buttonWrapper"> 
-           <a class="btnPurchase gtmSP_to_input">{{ 'sections.cart.checkout' | t }}</a> 
+           <a type="submit"
+              id="checkout"
+              name="checkout"
+              {% if cart == empty %}
+              disabled
+              {% endif %}
+              form="cart" 
+              class="btnPurchase gtmSP_to_input"
+              >
+             {{ 'sections.cart.checkout' | t }}
+            </a> 
           </div> 
        </main> 
     </form> 
