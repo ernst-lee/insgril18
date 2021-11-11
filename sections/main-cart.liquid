@@ -93,7 +93,9 @@
                        		<div class="wrapItemInfo clearfix"> 
                               
                                 <div class="point"> 
-                                 	
+                                  {%- if item.image -%}
+                                 	<img class="thumbnail" src="{{ item.image | img_url: '76x76' }}" /> 
+                                  {%- endif -%}
                                 </div> 
                               
                                 <div class="row3"> 
