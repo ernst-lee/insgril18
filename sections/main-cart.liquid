@@ -123,31 +123,31 @@
              </div> 
           </section> 
 
-         {% for block in section.blocks %}
-         	{%- case block.type -%}
-         	{%- when 'buttons' -%}
-             <div class="buttonWrapper"> 
-               <a type="submit"
-                  id="checkout"
-                  name="checkout"
-                  {% if cart == empty %}
-                  disabled
-                  {% endif %}
-                  form="cart" 
-                  class="btnPurchase gtmSP_to_input"
-                  >
-                 {{ 'sections.cart.checkout' | t }}
-               </a> 
-             </div> 
-       
-             {%- if additional_checkout_buttons -%}
-               <div style="text-align:center" class="cart__dynamic-checkout-buttons additional-checkout-buttons">
-                 {{ content_for_additional_checkout_buttons }}
-               </div>
-             {%- endif -%}
-         
-         	{%- endcase -%}
-         {% endfor %}
+           {% for block in section.blocks %}
+              {%- case block.type -%}
+              {%- when 'buttons' -%}
+               <div class="buttonWrapper"> 
+                 <a type="submit"
+                    id="checkout"
+                    name="checkout"
+                    {% if cart == empty %}
+                    disabled
+                    {% endif %}
+                    form="cart" 
+                    class="btnPurchase gtmSP_to_input"
+                    >
+                   {{ 'sections.cart.checkout' | t }}
+                 </a> 
+               </div> 
+
+               {%- if additional_checkout_buttons -%}
+                 <div style="text-align:center" class="cart__dynamic-checkout-buttons additional-checkout-buttons">
+                   {{ content_for_additional_checkout_buttons }}
+                 </div>
+               {%- endif -%}
+
+              {%- endcase -%}
+           {% endfor %}
          
        </main> 
     </form> 
