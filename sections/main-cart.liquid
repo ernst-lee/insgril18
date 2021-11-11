@@ -123,19 +123,24 @@
              </div> 
           </section> 
 
-          <div class="buttonWrapper"> 
-             <a type="submit"
-                id="checkout"
-                name="checkout"
-                {% if cart == empty %}
-                disabled
-                {% endif %}
-                form="cart" 
-                class="btnPurchase gtmSP_to_input"
-                >
-               {{ 'sections.cart.checkout' | t }}
-              </a> 
-          </div> 
+         {% for block in section.blocks %}
+         	{%- case block.type -%}
+         	{%- when 'buttons' -%}
+             <div class="buttonWrapper"> 
+               <a type="submit"
+                  id="checkout"
+                  name="checkout"
+                  {% if cart == empty %}
+                  disabled
+                  {% endif %}
+                  form="cart" 
+                  class="btnPurchase gtmSP_to_input"
+                  >
+                 {{ 'sections.cart.checkout' | t }}
+               </a> 
+             </div> 
+         	{%- endcase -%}
+         {% endfor %}
        </main> 
     </form> 
 </div> 
