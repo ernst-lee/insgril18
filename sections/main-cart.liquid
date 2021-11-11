@@ -33,6 +33,20 @@
                      {% for block in section.blocks %}
                     	{%- case block.type -%}
                       		{%- when 'subtotal' -%}
+                     			
+                     			<tr> 
+                                   <th class="cartListHeader">商品合計</th> 
+                                   <td> &yen; 3,915 </td> 
+                                </tr> 
+                                <tr> 
+                                   <th class="cartListHeader">送料</th> 
+                                   <td>配送先によって異なります。</td> 
+                                </tr> 
+                                <tr class="emphasis"> 
+                                   <th>合計</th> 
+                                   <td> &yen; 3,915 </td> 
+                                </tr> 
+                     			
                      			{%- if cart.cart_level_discount_applications.size > 0 -%}
                                 {%- for discount in cart.cart_level_discount_applications -%}
                      			<tr> 
@@ -41,20 +55,10 @@
                                 </tr> 
                                 {%- endfor -%}
                                 {%- endif -%}
+                     
                      	{%- endcase -%}
                      {% endfor %}
-                      <tr> 
-                         <th class="cartListHeader">商品合計</th> 
-                         <td> &yen; 3,915 </td> 
-                      </tr> 
-                      <tr> 
-                         <th class="cartListHeader">送料</th> 
-                         <td>配送先によって異なります。</td> 
-                      </tr> 
-                      <tr class="emphasis"> 
-                         <th>合計</th> 
-                         <td> &yen; 3,915 </td> 
-                      </tr> 
+                      
                    </tbody>
                 </table> 
             	<p class="shippingFeeFree shippingFeeFree--isNotFree">
