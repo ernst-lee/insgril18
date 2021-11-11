@@ -12,7 +12,7 @@
 
 <script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
 
-<div id="main-cart-content" class="motion"> 
+<div id="main-cart-content" data-id="{{ section.id }}" class="motion"> 
   	<div> 
       	<a href="{{ routes.all_products_collection_url }}" class="btnContinue">{{ 'general.continue_shopping' | t }}</a> 
   	</div>
