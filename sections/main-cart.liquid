@@ -29,6 +29,13 @@
            	 <div class="innerContent"> 
                 <table class="l_bothSidesTable"> 
                    <tbody>
+                     
+                     {% for block in section.blocks %}
+                    	{%- case block.type -%}
+                      		{%- when 'subtotal' -%}
+                     			123
+                     	{%- endcase -%}
+                     {% endfor %}
                       <tr> 
                          <th class="cartListHeader">商品合計</th> 
                          <td> &yen; 3,915 </td> 
