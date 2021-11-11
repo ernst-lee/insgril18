@@ -198,6 +198,7 @@
       "cart_title": "ショッピングカート",
       "title": "カートの中身",
       "product_name": "商品名",
+      "product_list_title": "購入する商品",
       "product_price": "値段",
       "product_number": "個数",
       "product_total_price": "小計",
