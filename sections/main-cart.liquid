@@ -64,7 +64,7 @@
                      
                                  <tr class="emphasis"> 
                                    <th>{{ 'sections.cart.subtotal' | t }}</th> 
-                                   <td> &yen; 3,915 </td> 
+                                   <td>{{ cart.total_price | money_with_currency }}</td> 
                      			 </tr> 
                      
                      	{%- endcase -%}
