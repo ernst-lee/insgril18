@@ -100,25 +100,6 @@
           </div> 
        </main> 
     </form> 
-    <input id="x_amazonPayScript" type="hidden" value="{&quot;merchantId&quot;:&quot;A3EIZPG6KRXRSZ&quot;,&quot;ledgerCurrency&quot;:&quot;JPY&quot;,&quot;sandbox&quot;:false,&quot;checkoutLanguage&quot;:&quot;ja_JP&quot;,&quot;productType&quot;:&quot;PayAndShip&quot;,&quot;placement&quot;:&quot;Cart&quot;,&quot;buttonColor&quot;:&quot;Gold&quot;,&quot;createCheckoutSessionConfig&quot;:{&quot;payloadJSON&quot;:&quot;{\&quot;storeId\&quot;:\&quot;amzn1.application-oa2-client.e616fd87f4854cecb88b50f9b665f484\&quot;,\&quot;webCheckoutDetails\&quot;:{\&quot;checkoutReviewReturnUrl\&quot;:\&quot;https:\/\/www.insgirl18.com\/order\/addressee\/insgirl18\&quot;,\&quot;checkoutResultReturnUrl\&quot;:\&quot;https:\/\/www.insgirl18.com\/order\/amazon_pay_processing\/insgirl18\&quot;},\&quot;paymentDetails\&quot;:{\&quot;allowOvercharge\&quot;:true},\&quot;merchantMetadata\&quot;:{\&quot;noteToBuyer\&quot;:\&quot;https:\/\/www.insgirl18.com\&quot;},\&quot;deliverySpecifications\&quot;:{\&quot;addressRestrictions\&quot;:{\&quot;type\&quot;:\&quot;Allowed\&quot;,\&quot;restrictions\&quot;:{\&quot;JP\&quot;:{\&quot;statesOrRegions\&quot;:[\&quot;\u5317\u6d77\u9053\&quot;,\&quot;\u9752\u68ee\u770c\&quot;,\&quot;\u5ca9\u624b\u770c\&quot;,\&quot;\u5bae\u57ce\u770c\&quot;,\&quot;\u79cb\u7530\u770c\&quot;,\&quot;\u5c71\u5f62\u770c\&quot;,\&quot;\u798f\u5cf6\u770c\&quot;,\&quot;\u8328\u57ce\u770c\&quot;,\&quot;\u6803\u6728\u770c\&quot;,\&quot;\u7fa4\u99ac\u770c\&quot;,\&quot;\u57fc\u7389\u770c\&quot;,\&quot;\u5343\u8449\u770c\&quot;,\&quot;\u6771\u4eac\u90fd\&quot;,\&quot;\u795e\u5948\u5ddd\u770c\&quot;,\&quot;\u5c71\u68a8\u770c\&quot;,\&quot;\u65b0\u6f5f\u770c\&quot;,\&quot;\u9577\u91ce\u770c\&quot;,\&quot;\u5bcc\u5c71\u770c\&quot;,\&quot;\u77f3\u5ddd\u770c\&quot;,\&quot;\u798f\u4e95\u770c\&quot;,\&quot;\u5c90\u961c\u770c\&quot;,\&quot;\u9759\u5ca1\u770c\&quot;,\&quot;\u611b\u77e5\u770c\&quot;,\&quot;\u4e09\u91cd\u770c\&quot;,\&quot;\u6ecb\u8cc0\u770c\&quot;,\&quot;\u4eac\u90fd\u5e9c\&quot;,\&quot;\u5927\u962a\u5e9c\&quot;,\&quot;\u5175\u5eab\u770c\&quot;,\&quot;\u5948\u826f\u770c\&quot;,\&quot;\u548c\u6b4c\u5c71\u770c\&quot;,\&quot;\u9ce5\u53d6\u770c\&quot;,\&quot;\u5cf6\u6839\u770c\&quot;,\&quot;\u5ca1\u5c71\u770c\&quot;,\&quot;\u5e83\u5cf6\u770c\&quot;,\&quot;\u5c71\u53e3\u770c\&quot;,\&quot;\u5fb3\u5cf6\u770c\&quot;,\&quot;\u9999\u5ddd\u770c\&quot;,\&quot;\u611b\u5a9b\u770c\&quot;,\&quot;\u9ad8\u77e5\u770c\&quot;,\&quot;\u798f\u5ca1\u770c\&quot;,\&quot;\u4f50\u8cc0\u770c\&quot;,\&quot;\u9577\u5d0e\u770c\&quot;,\&quot;\u718a\u672c\u770c\&quot;,\&quot;\u5927\u5206\u770c\&quot;,\&quot;\u5bae\u5d0e\u770c\&quot;,\&quot;\u9e7f\u5150\u5cf6\u770c\&quot;,\&quot;\u6c96\u7e04\u770c\&quot;]}}}}}&quot;,&quot;signature&quot;:&quot;g0kbBMI6PEfwB41F5pwjSuSn\/7pAVin54MJh3q53Srw7aPlhODJsWWBPRb1aCeUya1HWacmCZ98sGIqiHrYjo74qLDqzX1CFUdh4p71Ay1HDaEAl0oVRJlbFAX4ecD8iLN+daLbBcQc8OQolgHz4XhC5EwIrEjknWk0tY2w3yPbBhD9z1EWvZTSAuhx5oxLtGUUos\/SzvNGMTV55brYKnOVyO44rruznYPLP7LnMQn6mnrkoU\/DROHzoPCrM761fHAOjFgjoUdyNi0lbQ1Yp+tIl8lXidU+fg5NqaPOkpzBpCKPGq24JyZNf9wmcmX+Fc1JFPsCXFvRiUaATPIoL1w==&quot;,&quot;publicKeyId&quot;:&quot;AE3TXAFUTFCBZYZ45JJ47Y6I&quot;}}" /> 
-    <script src="https://static-fe.payments-amazon.com/checkout.js"></script> 
-    <script>
-      $(function() {
-          function create_amazon_pay_buttons(context) {
-              if (document.getElementById("amazon_pay-button-container-top") != null) {
-                  amazon.Pay.renderButton('#amazon_pay-button-container-top', context);
-              }
-              if (document.getElementById("amazon_pay-button-container-bottom") != null) {
-                  amazon.Pay.renderButton('#amazon_pay-button-container-bottom', context);
-              }
-          }
-
-          var input = document.querySelector('#x_amazonPayScript');
-          try {
-              create_amazon_pay_buttons(JSON.parse(input.value));
-          } catch(e) { }
-      })
-	</script> 
 </div> 
 
 <!--
