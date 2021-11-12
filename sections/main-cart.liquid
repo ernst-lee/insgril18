@@ -13,6 +13,31 @@
 <script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
 
 <div id="main-cart-content" data-id="{{ section.id }}" class="motion"> 
+  {% if cart != empty %}
+  	<main>
+        <section>
+              <div class="cover centering">
+                  <div class="centeringContent">
+                      <div class="textCenter">
+                          <img src="/theme/Smartphone/img/common/cart.png" width="80">
+                      </div>
+                      <div class="wrap">
+                          <p class="text textCenter">ショッピングカートに商品は入っていません。</p>
+                          <p id="cookieMsg" class="text textCenter error-message hide">
+                              クッキーが無効になっています。<br>
+                              ショッピングを続けるにはクッキーを有効にしてください。</p>
+                      </div>
+                      <div class="wrap">
+                          <p class="text textCenter">
+                              <a href="https://www.insgirl18.com">
+                                  ショップに戻る						</a>
+                          </p>
+                      </div>
+                  </div>
+              </div>
+        </section>
+	</main>
+  {% else %}
   	<div> 
       	<a href="{{ routes.all_products_collection_url }}" class="btnContinue">{{ 'general.continue_shopping' | t }}</a> 
   	</div>
@@ -203,6 +228,7 @@
        </main> 
       </cart-items>
     </form> 
+  {% endif %}
 </div> 
 
 <!--
