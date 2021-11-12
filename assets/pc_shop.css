@@ -5889,7 +5889,7 @@ html[data-scope-action=home_default] .default__shopname img {
 	max-width: 630px
 }
 
-html[data-scope-action=home_default] .notfound__wrapper {
+.notfound__wrapper {
 	background-color: #fff;
 	padding: 50px 0
 }
