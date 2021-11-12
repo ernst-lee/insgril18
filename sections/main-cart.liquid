@@ -178,7 +178,7 @@
               {%- case block.type -%}
               {%- when 'buttons' -%}
                <div class="buttonWrapper"> 
-                 <a type="submit"
+                 <button type="submit"
                     id="checkout"
                     name="checkout"
                     {% if cart == empty %}
@@ -188,7 +188,7 @@
                     class="btnPurchase gtmSP_to_input"
                     >
                    {{ 'sections.cart.checkout' | t }}
-                 </a> 
+                 </button> 
                </div> 
 
                {%- if additional_checkout_buttons -%}
