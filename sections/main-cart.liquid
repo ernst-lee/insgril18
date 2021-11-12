@@ -13,7 +13,7 @@
 <script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
 
 <div id="main-cart-content" data-id="{{ section.id }}" class="motion"> 
-  {% if cart != empty %}
+  {% if cart == empty %}
   	<main>
         <section>
               <div class="cover centering">
