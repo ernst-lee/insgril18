@@ -747,6 +747,9 @@
       "settings": {
         "products": {
           "label": "推荐产品"
+        },
+        "categorys": {
+          "label": "展示分类"
         }
       }
     },
