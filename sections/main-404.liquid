@@ -20,7 +20,7 @@
       
       {%- if section.settings.products != blank -%}
       	
-      {%- for product in section.settings.products -%}
+      {%- for product in section.settings.products.links -%}
       {{ product.title }}
       {{ product.image }}
       {%- endfor -%}
