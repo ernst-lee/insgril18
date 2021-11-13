@@ -18,6 +18,7 @@
             {{ shop.name }}{{ 'templates.404.other_product' | t }}
         </h2>
       
+      {%- if section.settings.products != blank -%}
         <div class="shopBlock__items">
             <ul class="itemList">
               
@@ -129,6 +130,7 @@
               
             </ul>
         </div>
+      {%- endif -%}
       
       {%- if section.settings.categorys != blank -%}
         <div class="shopCat">
@@ -161,6 +163,7 @@
               
             </ul>
         </div>
+      
       {%- endif -%}
     </section>
 </div>
