@@ -19,6 +19,11 @@
         </h2>
       
       {%- if section.settings.products != blank -%}
+      	
+      {%- for product in section.settings.products.links -%}
+      1
+      {%- endfor -%}
+      
         <div class="shopBlock__items">
             <ul class="itemList">
               
