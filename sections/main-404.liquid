@@ -22,7 +22,8 @@
       	
       {%- for product in section.settings.products.links -%}
       {{ product.title }}
-      {{ product.image }}
+      {{ product.object.featured_image }}
+      <br>
       {%- endfor -%}
       
         <div class="shopBlock__items">
