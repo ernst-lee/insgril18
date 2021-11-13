@@ -742,6 +742,14 @@
         }
       }
     },
+    "404": {
+      "name": "404主体",
+      "settings": {
+        "products": {
+          "label": "推荐产品"
+        }
+      }
+    },
     "top_computer_search": {
       "name": "电脑端顶部搜索区域",
       "settings": {
