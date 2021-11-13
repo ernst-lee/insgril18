@@ -1,9 +1,9 @@
 {{ 'pc_shop.css' | asset_url | stylesheet_tag }}
 <div class="notfound__wrapper">
-    <div>
+    <div
+         {{ 'templates.cart.cart' | t }}
         <h2 class="notfound__heading">
             ページが見つかりません。
-          {{ 'templates.cart.cart' | t }}
         </h2>
         <p class="notfound__intro">
             申し訳ございませんが、この商品は売り切れなどの
