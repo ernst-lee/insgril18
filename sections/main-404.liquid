@@ -19,13 +19,6 @@
         </h2>
       
       {%- if section.settings.products != blank -%}
-      	
-      {%- for product in section.settings.products.links -%}
-      {{ product.title }}
-      {{ product.object.featured_image }}
-      <br>
-      {%- endfor -%}
-      
         <div class="shopBlock__items">
             <ul class="itemList">
               {%- for product in section.settings.products.links -%}
