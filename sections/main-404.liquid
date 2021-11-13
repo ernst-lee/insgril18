@@ -28,16 +28,19 @@
       
         <div class="shopBlock__items">
             <ul class="itemList">
-              
+              {%- for product in section.settings.products.links -%}
                 <li class="itemList__li">
-                    <a class="itemList__link" href="https://www.insgirl18.com/items/53805824">
-                        <img class="itemList__img" src="https://baseec-img-mng.akamaized.net/images/item/origin/95b150ec6f891f8efc0464847f3b5782.jpg?imformat=generic&amp;q=90&amp;im=Resize,width=300,type=normal"
-                        alt="セットアップ トップス+スカート 2点セット 女性らしい 配色 OL/フォーマル Vネック スピーカースリーブ S M L LL53805824"
-                        title="セットアップ トップス+スカート 2点セット 女性らしい 配色 OL/フォーマル Vネック スピーカースリーブ S M L LL53805824">
+                    <a class="itemList__link" href="{{ product.url }}">
+                        <img 
+                             class="itemList__img" 
+                             src="{{ product.object.featured_image | img_url:'300x300' }}"
+                            alt="{{ product.title }}"
+                            title="{{ product.title }}"
+                             >
                         <div class="itemList__title">
                             <div class="itemList__textwrapper">
                                 <span class="itemText__name">
-                                    セットアップ トップス+スカート 2点セット 女性らしい 配色 OL/フォーマル Vネック スピーカースリーブ S M L LL53805824
+                                    {{ product.title | escape }}
                                 </span>
                                 <br>
                                 <span class="itemText__price">
@@ -47,94 +50,7 @@
                         </div>
                     </a>
                 </li>
-                <li class="itemList__li">
-                    <a class="itemList__link" href="https://www.insgirl18.com/items/53740544">
-                        <img class="itemList__img" src="https://baseec-img-mng.akamaized.net/images/item/origin/98eea0f60b0e5bf0bc29135882bd1092.jpg?imformat=generic&amp;q=90&amp;im=Resize,width=300,type=normal"
-                        alt="★Nina様着用★ワンピース OL/フォーマル 無地 シフォン 膝上 気質ネックラインデザイン ノースリーブ  S M L LL53740544"
-                        title="★Nina様着用★ワンピース OL/フォーマル 無地 シフォン 膝上 気質ネックラインデザイン ノースリーブ  S M L LL53740544">
-                        <div class="itemList__title">
-                            <div class="itemList__textwrapper">
-                                <span class="itemText__name">
-                                    ★Nina様着用★ワンピース OL/フォーマル 無地 シフォン 膝上 気質ネックラインデザイン ノースリーブ S M L LL53740544
-                                </span>
-                                <br>
-                                <span class="itemText__price">
-                                    ¥ 4,062
-                                </span>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li class="itemList__li">
-                    <a class="itemList__link" href="https://www.insgirl18.com/items/35259648">
-                        <img class="itemList__img" src="https://baseec-img-mng.akamaized.net/images/item/origin/2b72d73c59b793074026d322edbd5650.jpg?imformat=generic&amp;q=90&amp;im=Resize,width=300,type=normal"
-                        alt="ワンピース 切り替え 魅力 無地 ロング フェミニン Vネック ブルー S M L LL35259648" title="ワンピース 切り替え 魅力 無地 ロング フェミニン Vネック ブルー S M L LL35259648">
-                        <div class="itemList__title">
-                            <div class="itemList__textwrapper">
-                                <span class="itemText__name">
-                                    ワンピース 切り替え 魅力 無地 ロング フェミニン Vネック ブルー S M L LL35259648
-                                </span>
-                                <br>
-                                <span class="itemText__price">
-                                    ¥ 3,308
-                                </span>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li class="itemList__li">
-                    <a class="itemList__link" href="https://www.insgirl18.com/items/53741056">
-                        <img class="itemList__img" src="https://baseec-img-mng.akamaized.net/images/item/origin/1de29a72afca8682cac52774eeebbb17.jpg?imformat=generic&amp;q=90&amp;im=Resize,width=300,type=normal"
-                        alt="シューズ ブーツ ファッション 目を奪われる 流行兆し 個性 バーガンディー ベージュ ブラック 8CM53741056" title="シューズ ブーツ ファッション 目を奪われる 流行兆し 個性 バーガンディー ベージュ ブラック 8CM53741056">
-                        <div class="itemList__title">
-                            <div class="itemList__textwrapper">
-                                <span class="itemText__name">
-                                    シューズ ブーツ ファッション 目を奪われる 流行兆し 個性 バーガンディー ベージュ ブラック 8CM53741056
-                                </span>
-                                <br>
-                                <span class="itemText__price">
-                                    ¥ 4,505
-                                </span>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li class="itemList__li">
-                    <a class="itemList__link" href="https://www.insgirl18.com/items/53741312">
-                        <img class="itemList__img" src="https://baseec-img-mng.akamaized.net/images/item/origin/db407b36860ba1bb4a0d40df116aed9e.jpg?imformat=generic&amp;q=90&amp;im=Resize,width=300,type=normal"
-                        alt="ボトムス スカート ペプラム フィッシュテール エレガント不規則 タイト ワインレッド ブラック S M L XL53741312"
-                        title="ボトムス スカート ペプラム フィッシュテール エレガント不規則 タイト ワインレッド ブラック S M L XL53741312">
-                        <div class="itemList__title">
-                            <div class="itemList__textwrapper">
-                                <span class="itemText__name">
-                                    ボトムス スカート ペプラム フィッシュテール エレガント不規則 タイト ワインレッド ブラック S M L XL53741312
-                                </span>
-                                <br>
-                                <span class="itemText__price">
-                                    ¥ 3,660
-                                </span>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li class="itemList__li">
-                    <a class="itemList__link" href="https://www.insgirl18.com/items/53741568">
-                        <img class="itemList__img" src="https://baseec-img-mng.akamaized.net/images/item/origin/dbb4b381ae9eaab409f30eb6446fd2e8.jpg?imformat=generic&amp;q=90&amp;im=Resize,width=300,type=normal"
-                        alt="ワンピース カジュアル ボタン Aライン 人気上昇中 花柄 大きいサイズ  M L XL 2XL53741568" title="ワンピース カジュアル ボタン Aライン 人気上昇中 花柄 大きいサイズ  M L XL 2XL53741568">
-                        <div class="itemList__title">
-                            <div class="itemList__textwrapper">
-                                <span class="itemText__name">
-                                    ワンピース カジュアル ボタン Aライン 人気上昇中 花柄 大きいサイズ M L XL 2XL53741568
-                                </span>
-                                <br>
-                                <span class="itemText__price">
-                                    ¥ 3,957
-                                </span>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-              
+              {%- endfor -%}
             </ul>
         </div>
       {%- endif -%}
