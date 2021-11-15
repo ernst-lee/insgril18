@@ -42,6 +42,9 @@
     "search": {
       "search": "検索"
     },
+    "index_home": {
+      "product_title": "New Arrival"
+    },
     "cart": {
       "view": "カートを見る ({{ count }})",
       "item_added": "カートにアイテムが追加されました"
