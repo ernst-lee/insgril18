@@ -14,7 +14,7 @@
     "discount": {
       "project": "{{ money }}円以上{{ discount_money }}円OFF！CODE：",
       "info": "購入際にコードを入力すると、該当金額を減免されます",
-      "freight_info": ""
+      "freight_info": "{{ money }}円以上のご購入で送料無料"
     },
     "social": {
       "share_on_facebook": "シェア",
