@@ -17,7 +17,7 @@
 
     <div class="paradis-postage">
       
-      {{ section.settings.text }}
+      {% render 'discount' %}
      
   	 </div>
 
@@ -27,11 +27,7 @@
   {
     "name": "t:sections.top_computer_search.name",
     "settings": [
-     	 {
-          "type": "text",
-          "id": "text",
-          "label": "t:sections.top_computer_search.settings.html.label"
-        }   
+     	   
      ]
   }
 {% endschema %}
