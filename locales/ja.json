@@ -12,7 +12,7 @@
       "powered_by_shopify_html": "このショップでは{{ shopify }}を使用する予定です"
     },
     "discount": {
-      "project": "{{ money }}円以上{{ discount_money }}円OFF！CODE：<b><red>{{ code }}<\/red><\/b><br>"
+      "project": "{{ money }}円以上{{ discount_money }}円OFF！CODE："
     },
     "social": {
       "share_on_facebook": "シェア",
