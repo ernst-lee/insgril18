@@ -25,7 +25,7 @@
   <div class="mobile-and-tablet-only">
 
     <div class="paradis-postage">
-      {{ section.settings.text }}
+      {% render 'discount' %}
     </div>
 
     <div id="phone-search" class="clearfix">
@@ -69,12 +69,7 @@
           "type": "url",
           "id": "banner2_url",
           "label": "t:sections.top_phone_search_and_advertisement.settings.banner2_url.label"
-        },
-		{
-          "type": "text",
-          "id": "text",
-          "label": "t:sections.top_phone_search_and_advertisement.settings.html.label"
-        }   
+        }  
 	]
   }
 {% endschema %}
