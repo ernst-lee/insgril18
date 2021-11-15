@@ -14,8 +14,10 @@
     "top_phone_search_and_advertisement": {
       "type": "top-phone-search-and-advertisement",
       "settings": {
-        "banner1_url": "",
-        "banner2_url": ""
+        "banner1": "shopify:\/\/shop_images\/96b42aee96988385d74d866ec45ace06.png",
+        "banner1_url": "#",
+        "banner2": "shopify:\/\/shop_images\/2c16df89957a0e4b4b62b635fcea3b6f.jpg",
+        "banner2_url": "#"
       }
     },
     "home_left": {
