@@ -5,7 +5,7 @@
 
     <h1>
       <i class="fa fa-paw dolce-pointcolor" aria-hidden="true"></i>
-      {{ section.settings.home_products_title }}
+      {{ 'general.index_home.product_title' | t }}
     </h1>
     
 	{%- paginate section.settings.collection.products by section.settings.products_per_page -%}
@@ -38,12 +38,6 @@
     "name": "t:sections.index_home.name",
     "settings": [
 		
-		{
-		  "type": "text",
-          "id": "home_products_title",
- 		  "default": "New Arrival",
-		  "label": "t:sections.index_home.settings.home_products_title.label"
-		},
 		{
 		  "type": "collection",
           "id": "collection",
