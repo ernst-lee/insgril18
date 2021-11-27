@@ -116,7 +116,7 @@
              <div class="l_simpleList"> 
                 <ul> 
                   	{%- for item in cart.items -%}
-                	<li class="item"> 
+                	<li class="item" id="CartItem-{{ item.index | plus: 1 }}"> 
                     	<div> 
                        		<div class="wrapItemInfo clearfix"> 
                               
@@ -125,7 +125,11 @@
                                  	<img class="thumbnail" src="{{ item.image | img_url: '70x70' }}" /> 
                                   {%- endif -%}
                                 </div> 
-                              
+                                
+                                <div class="pull-right loading-overlay hidden">
+                                  <img src="{{ 'ajax-loader4.gif' | asset_url }}">
+                                </div>
+
                                 <div class="row3"> 
                                    <div class="row textAbbr"> 
                                     	<a href="{{ item.url }}" target="_blank">{{ item.product.title | escape }}</a> 

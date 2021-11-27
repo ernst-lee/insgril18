@@ -1,5 +1,7 @@
+{%- assign is_home = canonical_url | replace: shop.url , "" -%}
 <section>
 
+  {%- if is_home == routes.root_url -%}
   {%- if section.settings.banner1 != blank or section.settings.banner2 != blank -%}
   <div class="mobile-and-tablet-only clearfix">
 
@@ -20,6 +22,7 @@
 	{%- endif -%}
     
   </div>
+  {%- endif -%}
   {%- endif -%}
 
   <div class="mobile-and-tablet-only">

@@ -325,6 +325,15 @@
       
     </head>
 
+    {%- assign now_route_ = canonical_url | replace: shop.url , "" -%}
+    {%- assign now_route = now_route_ | replace: routes.root_url , "" -%}
+    
+    {%- if now_route and (now_route == 'cart' or now_route == 'account' or now_route == "accountlogin" or now_route == 'accountregister' or now_route == 'accountaddresses' or now_route == '404' ) -%}
+        {%- assign account = true -%}
+    {%- else-%}
+        {%- assign account = false -%}
+    {%- endif -%}
+
     <body id="shopTopPage">
       <div class="skyscraper">
 
@@ -332,7 +341,19 @@
           {% section 'header' %}
           
           <div class="maincontainer clearfix">
+            {%- if account -%}
+            {%- else -%}
+            {% section 'top-category' %}
+            {% section 'top-computer-search' %}
+            {% section 'topslider' %}
+            {% section 'top-phone-search-and-advertisement' %}
+            {% section 'main-left' %}
+            {% endif %}
           	{{ content_for_layout }}
+            {%- if account -%}
+            {%- else -%}
+            {% section 'buttom-right' %}
+            {% endif %}
           </div>
           
         </div>

@@ -14,7 +14,7 @@
     </div>
   
     <section class="shopBlock">
-      {%- if section.settings.products != blank -%}
+      {%- if section.settings.products.links != blank -%}
       	<h2 class="shopBlock__title">
             {{ shop.name }}{{ 'templates.404.other_product' | t }}
         </h2>
@@ -47,7 +47,7 @@
         </div>
       {%- endif -%}
       
-      {%- if section.settings.categorys != blank -%}
+      {%- if section.settings.categorys.links != blank -%}
         <div class="shopCat">
             <h3 class="shopCat__title">
                 {{ 'templates.404.categorys' | t }}

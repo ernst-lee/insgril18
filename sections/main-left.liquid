@@ -1,4 +1,6 @@
+{%- assign is_home = canonical_url | replace: shop.url , "" -%}
 <div id="sidebar" class="main-left">
+    {%- if is_home == routes.root_url -%}
     {%- if section.settings.left_banner != blank -%}
     <section>
       <div class="marb10">
@@ -7,6 +9,7 @@
         </a>
       </div>
     </section>
+    {%- endif -%}
     {%- endif -%}
 
     {%- if section.settings.home_category != blank -%}
